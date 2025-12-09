@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Quiz | IT3203 Web Project</title>
+  <meta name="description" content="HTTP self‑assessment quiz"/>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<nav class="nav" aria-label="Main navigation">
+  <a class="logo" href="index.html">IT3203 Web Project</a>
+  <button class="nav-toggle" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="nav-toggle-bar"></span>
+    <span class="nav-toggle-bar"></span>
+    <span class="nav-toggle-bar"></span>
+  </button>
+  <ul class="menu">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="topic-http.html">HTTP Basics</a></li>
+    <li><a href="topic-http2-performance.html">HTTP/2 Performance</a></li>
+    <li><a href="topic-http3.html">HTTP/3 &amp; QUIC</a></li>
+    <li><a href="key-concepts.html">Key Concepts</a></li>
+    <li><a href="references.html">References</a></li>
+    <li><a href="quiz.html">Quiz</a></li>
+    <li><a href="about.html">About</a></li>
+  </ul>
+</nav>
+
+<main class="container">
+
+<article class="content">
+  <h1>HTTP Self‑Assessment Quiz</h1>
+  <p>
+    Answer the questions below after reading the topic pages. When you submit, you will see a pass/fail
+    result, total score, and a breakdown for each question on this page.
+  </p>
+
+  <form id="quizForm" class="quiz" novalidate>
+    <section class="q card">
+      <h2>1) Fill in the blank</h2>
+      <label for="q1">What does the acronym "HTTP" stand for?</label>
+      <input id="q1" name="q1" type="text" placeholder="Your answer..." autocomplete="off" required>
+      <p class="hint note">Tip: full phrase, case‑insensitive.</p>
+    </section>
+
+    <section class="q card">
+      <h2>2) Multiple Choice</h2>
+      <fieldset>
+        <legend>Which HTTP method is <em>idempotent</em>?</legend>
+        <label><input type="radio" name="q2" value="GET"> GET</label>
+        <label><input type="radio" name="q2" value="POST"> POST</label>
+        <label><input type="radio" name="q2" value="PATCH"> PATCH</label>
+      </fieldset>
+    </section>
+
+    <section class="q card">
+      <h2>3) Multiple Choice</h2>
+      <fieldset>
+        <legend>Which status code indicates the resource was not found?</legend>
+        <label><input type="radio" name="q3" value="200"> 200</label>
+        <label><input type="radio" name="q3" value="301"> 301</label>
+        <label><input type="radio" name="q3" value="404"> 404</label>
+      </fieldset>
+    </section>
+
+    <section class="q card">
+      <h2>4) Multiple Choice</h2>
+      <fieldset>
+        <legend>Which header pair is primarily used to support caching validators?</legend>
+        <label><input type="radio" name="q4" value="auth"> Authorization &amp; Accept</label>
+        <label><input type="radio" name="q4" value="etag"> ETag &amp; Last-Modified</label>
+        <label><input type="radio" name="q4" value="ctype"> Content-Type &amp; Accept</label>
+      </fieldset>
+    </section>
+
+    <section class="q card">
+      <h2>5) Multi‑Select</h2>
+      <fieldset>
+        <legend>Select all statements that are true about HTTP/3/QUIC:</legend>
+        <label><input type="checkbox" name="q5" value="udp"> QUIC uses UDP as its transport.</label>
+        <label><input type="checkbox" name="q5" value="hol"> QUIC reduces head‑of‑line blocking effects.</label>
+        <label><input type="checkbox" name="q5" value="tcp"> HTTP/3 requires TCP to multiplex streams.</label>
+        <label><input type="checkbox" name="q5" value="migrate"> QUIC supports connection migration with Connection IDs.</label>
+      </fieldset>
+    </section>
+
+    <div class="quiz-actions">
+      <button type="submit" class="btn primary">Submit</button>
+      <button type="reset" id="resetBtn" class="btn subtle">Reset</button>
+    </div>
+  </form>
+
+  <section id="results" class="results card" aria-live="polite" aria-atomic="true" hidden></section>
+</article>
+
+</main>
+
+<footer class="site-footer">
+  <p>© 2025 Miles Johnson — IT 3203 Project (Milestone #3)</p>
+  <p class="note">This website is a class project for
+    <a href="https://ksuweb.github.io/IT3203/" target="_blank" rel="noopener">KSU IT 3203 Web Development</a>.
+  </p>
+</footer>
+
+<script src="script.js" defer></script>
+</body>
+</html>

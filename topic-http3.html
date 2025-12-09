@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>HTTP/3 & QUIC | IT3203 Web Project</title>
+  <meta name="description" content="HTTP/3 over QUIC and its impact on performance"/>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<nav class="nav" aria-label="Main navigation">
+  <a class="logo" href="index.html">IT3203 Web Project</a>
+  <button class="nav-toggle" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="nav-toggle-bar"></span>
+    <span class="nav-toggle-bar"></span>
+    <span class="nav-toggle-bar"></span>
+  </button>
+  <ul class="menu">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="topic-http.html">HTTP Basics</a></li>
+    <li><a href="topic-http2-performance.html">HTTP/2 Performance</a></li>
+    <li><a href="topic-http3.html">HTTP/3 &amp; QUIC</a></li>
+    <li><a href="key-concepts.html">Key Concepts</a></li>
+    <li><a href="references.html">References</a></li>
+    <li><a href="quiz.html">Quiz</a></li>
+    <li><a href="about.html">About</a></li>
+  </ul>
+</nav>
+
+<main class="container">
+
+<article class="content">
+  <h1 id="http3">HTTP/3 &amp; QUIC</h1>
+  <p>
+    HTTP/3 runs over QUIC, a transport protocol built on top of UDP rather than TCP. QUIC integrates TLS,
+    multiplexed streams, and modern congestion control in user space, allowing it to evolve independently of
+    the operating system’s TCP stack.
+  </p>
+
+  <h2>Why Move to QUIC?</h2>
+  <ol>
+    <li><strong>Faster connection setup</strong> — QUIC integrates TLS handshakes and supports 0‑RTT and 1‑RTT connection establishment.</li>
+    <li><strong>Reduced head‑of‑line blocking</strong> — Lost packets affect only the streams that reference those packets.</li>
+    <li><strong>Connection migration</strong> — Connection IDs allow flows to survive IP or network changes, such as moving from Wi‑Fi to cellular.</li>
+  </ol>
+
+  <h2>Stream‑Level Reliability</h2>
+  <p>
+    With TCP, all bytes in a connection share a single sequence space. If a packet is dropped, subsequent
+    data cannot be delivered until the missing bytes are retransmitted. QUIC instead applies reliability at
+    the stream level. Each stream has its own flow control, and packets are encrypted individually.
+  </p>
+
+  <h2>Impact on Web Developers</h2>
+  <p>
+    Although HTTP/3 changes the transport layer, most web APIs remain the same. From the perspective of
+    a frontend developer:
+  </p>
+  <ul>
+    <li>URLs still use <code>https://</code>, not a new scheme.</li>
+    <li>Browsers automatically negotiate HTTP/2 or HTTP/3 based on server support.</li>
+    <li>Monitoring tools increasingly distinguish HTTP/3 in performance dashboards.</li>
+  </ul>
+  <p>
+    For operations teams, enabling HTTP/3 usually involves turning on QUIC/TLS support at the CDN or
+    load balancer and verifying that firewall rules allow UDP on the relevant ports.
+  </p>
+</article>
+
+</main>
+
+<footer class="site-footer">
+  <p>© 2025 Miles Johnson — IT 3203 Project (Milestone #3)</p>
+  <p class="note">This website is a class project for
+    <a href="https://ksuweb.github.io/IT3203/" target="_blank" rel="noopener">KSU IT 3203 Web Development</a>.
+  </p>
+</footer>
+
+<script src="script.js" defer></script>
+</body>
+</html>

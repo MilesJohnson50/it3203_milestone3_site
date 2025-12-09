@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>HTTP/2 Performance | IT3203 Web Project</title>
+  <meta name="description" content="HTTP/2 multiplexing and performance features"/>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<nav class="nav" aria-label="Main navigation">
+  <a class="logo" href="index.html">IT3203 Web Project</a>
+  <button class="nav-toggle" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="nav-toggle-bar"></span>
+    <span class="nav-toggle-bar"></span>
+    <span class="nav-toggle-bar"></span>
+  </button>
+  <ul class="menu">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="topic-http.html">HTTP Basics</a></li>
+    <li><a href="topic-http2-performance.html">HTTP/2 Performance</a></li>
+    <li><a href="topic-http3.html">HTTP/3 &amp; QUIC</a></li>
+    <li><a href="key-concepts.html">Key Concepts</a></li>
+    <li><a href="references.html">References</a></li>
+    <li><a href="quiz.html">Quiz</a></li>
+    <li><a href="about.html">About</a></li>
+  </ul>
+</nav>
+
+<main class="container">
+
+<article class="content">
+  <h1>HTTP/2 Performance Characteristics</h1>
+  <p>
+    HTTP/2 keeps the same high‑level semantics as HTTP/1.1 but changes how messages are framed and
+    transported. The goal is to reduce latency and improve page load performance, especially on high‑latency
+    or lossy networks.
+  </p>
+
+  <h2>Binary Framing and Streams</h2>
+  <p>
+    HTTP/2 uses a binary framing layer that divides communication into independent <em>streams</em>. Each
+    stream carries frames belonging to a single logical request/response pair. All streams share one TCP
+    connection between client and origin.
+  </p>
+  <ul>
+    <li><strong>Streams</strong> — bidirectional channels identified by stream IDs.</li>
+    <li><strong>Frames</strong> — smallest unit of communication (HEADERS, DATA, SETTINGS, and so on).</li>
+    <li><strong>Multiplexing</strong> — interleaving frames from many streams on a single connection.</li>
+  </ul>
+
+  <h2>Multiplexing vs. Head‑of‑Line Blocking</h2>
+  <p>
+    Multiplexing allows a browser to fetch many resources in parallel without opening multiple TCP
+    connections. However, because everything still sits on top of a single TCP connection, a lost TCP
+    packet can delay frames from <em>all</em> streams until that packet is retransmitted. This residual
+    head‑of‑line blocking is one motivation for HTTP/3.
+  </p>
+
+  <h2>Header Compression (HPACK)</h2>
+  <p>
+    HTTP/2 introduces HPACK, a compression mechanism that reduces the size of HTTP headers.
+    Smaller headers matter because modern pages often make dozens of requests and repeat common header
+    fields (such as cookies and user agents).
+  </p>
+  <ul>
+    <li>Uses static and dynamic tables of header fields.</li>
+    <li>Encodes header names and values as indexes when possible.</li>
+    <li>Reduces bandwidth and can improve page load times on slow networks.</li>
+  </ul>
+
+  <h2>Prioritization and Server Push</h2>
+  <p>
+    Clients can assign relative priorities to streams, hinting which resources should be sent first.
+    HTTP/2 also defined server push, allowing servers to send related resources proactively. In practice,
+    server push has seen limited use and is being removed from many implementations as HTTP/3 becomes
+    the focus.
+  </p>
+</article>
+
+</main>
+
+<footer class="site-footer">
+  <p>© 2025 Miles Johnson — IT 3203 Project (Milestone #3)</p>
+  <p class="note">This website is a class project for
+    <a href="https://ksuweb.github.io/IT3203/" target="_blank" rel="noopener">KSU IT 3203 Web Development</a>.
+  </p>
+</footer>
+
+<script src="script.js" defer></script>
+</body>
+</html>

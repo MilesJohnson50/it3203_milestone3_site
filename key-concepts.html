@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Key Concepts | IT3203 Web Project</title>
+  <meta name="description" content="Glossary of HTTP and transport terms"/>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<nav class="nav" aria-label="Main navigation">
+  <a class="logo" href="index.html">IT3203 Web Project</a>
+  <button class="nav-toggle" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="nav-toggle-bar"></span>
+    <span class="nav-toggle-bar"></span>
+    <span class="nav-toggle-bar"></span>
+  </button>
+  <ul class="menu">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="topic-http.html">HTTP Basics</a></li>
+    <li><a href="topic-http2-performance.html">HTTP/2 Performance</a></li>
+    <li><a href="topic-http3.html">HTTP/3 &amp; QUIC</a></li>
+    <li><a href="key-concepts.html">Key Concepts</a></li>
+    <li><a href="references.html">References</a></li>
+    <li><a href="quiz.html">Quiz</a></li>
+    <li><a href="about.html">About</a></li>
+  </ul>
+</nav>
+
+<main class="container">
+
+<section class="content">
+  <h1>Key Concepts</h1>
+  <dl class="concepts">
+    <dt id="semantics">HTTP Semantics</dt>
+    <dd>The meaning of methods, status codes, and headers that remains consistent across HTTP/1.1, HTTP/2, and HTTP/3.</dd>
+
+    <dt id="idempotency">Idempotency</dt>
+    <dd>
+      A property of methods where repeating the same request has the same effect as performing it once
+      (for example, PUT or DELETE). Idempotency is important for safe retries.
+    </dd>
+
+    <dt id="caching">Caching</dt>
+    <dd>
+      The reuse of stored responses to avoid re‑fetching data. Validators such as ETag and Last‑Modified
+      allow clients to check whether cached content is still fresh.
+    </dd>
+
+    <dt id="tls">TLS</dt>
+    <dd>
+      Transport Layer Security, the cryptographic protocol behind HTTPS. TLS provides confidentiality,
+      integrity, and authentication between clients and servers.
+    </dd>
+
+    <dt id="hpack">HPACK</dt>
+    <dd>
+      The header compression format introduced by HTTP/2. HPACK reduces repeated header overhead using
+      static and dynamic tables.
+    </dd>
+
+    <dt id="quic">QUIC</dt>
+    <dd>
+      A UDP‑based transport protocol that integrates TLS and offers stream multiplexing without the
+      head‑of‑line blocking seen with TCP.
+    </dd>
+
+    <dt id="hol">Head‑of‑Line Blocking</dt>
+    <dd>
+      A performance problem where the loss of a single packet delays delivery of subsequent data. HTTP/3’s
+      use of QUIC helps reduce this issue.
+    </dd>
+  </dl>
+</section>
+
+</main>
+
+<footer class="site-footer">
+  <p>© 2025 Miles Johnson — IT 3203 Project (Milestone #3)</p>
+  <p class="note">This website is a class project for
+    <a href="https://ksuweb.github.io/IT3203/" target="_blank" rel="noopener">KSU IT 3203 Web Development</a>.
+  </p>
+</footer>
+
+<script src="script.js" defer></script>
+</body>
+</html>

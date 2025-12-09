@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>HTTP Basics | IT3203 Web Project</title>
+  <meta name="description" content="HTTP methods, status codes, and caching"/>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<nav class="nav" aria-label="Main navigation">
+  <a class="logo" href="index.html">IT3203 Web Project</a>
+  <button class="nav-toggle" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="nav-toggle-bar"></span>
+    <span class="nav-toggle-bar"></span>
+    <span class="nav-toggle-bar"></span>
+  </button>
+  <ul class="menu">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="topic-http.html">HTTP Basics</a></li>
+    <li><a href="topic-http2-performance.html">HTTP/2 Performance</a></li>
+    <li><a href="topic-http3.html">HTTP/3 &amp; QUIC</a></li>
+    <li><a href="key-concepts.html">Key Concepts</a></li>
+    <li><a href="references.html">References</a></li>
+    <li><a href="quiz.html">Quiz</a></li>
+    <li><a href="about.html">About</a></li>
+  </ul>
+</nav>
+
+<main class="container">
+
+<article class="content">
+  <h1 id="basics">HTTP Basics</h1>
+  <p>
+    Hypertext Transfer Protocol (HTTP) is an application‑layer protocol that defines how clients and
+    servers exchange messages on the web. It uses a request/response model: the client sends a request
+    line, headers, and an optional body; the server replies with a status line, headers, and an optional body.
+  </p>
+
+  <h2>Core Message Structure</h2>
+  <ul>
+    <li><strong>Request line</strong>: method, path, and HTTP version (for example, <code>GET /index.html HTTP/1.1</code>).</li>
+    <li><strong>Headers</strong>: metadata, including content type, length, language, and caching hints.</li>
+    <li><strong>Body</strong>: optional payload for methods such as POST and PUT.</li>
+  </ul>
+
+  <h2>Methods &amp; Semantics</h2>
+  <p>
+    Methods define the <em>intended meaning</em> of a request. Understanding which methods are safe and
+    idempotent is important for caching, retry logic, and API design.
+  </p>
+  <div class="table-wrapper">
+    <table>
+      <thead><tr><th>Method</th><th>Safe?</th><th>Idempotent?</th><th>Typical Use</th></tr></thead>
+      <tbody>
+        <tr><td>GET</td><td>Yes</td><td>Yes</td><td>Retrieve a representation of a resource.</td></tr>
+        <tr><td>HEAD</td><td>Yes</td><td>Yes</td><td>Retrieve headers only; often used to check metadata.</td></tr>
+        <tr><td>POST</td><td>No</td><td>No</td><td>Create subordinate resources, submit forms, or invoke actions.</td></tr>
+        <tr><td>PUT</td><td>No</td><td>Yes</td><td>Replace a resource at a known URI.</td></tr>
+        <tr><td>PATCH</td><td>No</td><td>Not guaranteed</td><td>Apply a partial update to a resource.</td></tr>
+        <tr><td>DELETE</td><td>No</td><td>Yes</td><td>Remove a resource.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Representative Status Codes</h2>
+  <p>
+    Status codes report whether a request succeeded and how the client should proceed.
+  </p>
+  <div class="table-wrapper">
+    <table>
+      <thead><tr><th>Code</th><th>Class</th><th>Meaning</th></tr></thead>
+      <tbody>
+        <tr><td>200</td><td>2xx (Success)</td><td>OK — the request succeeded.</td></tr>
+        <tr><td>204</td><td>2xx</td><td>No Content — success with no body.</td></tr>
+        <tr><td>301</td><td>3xx (Redirection)</td><td>Moved Permanently — resource has a new URI.</td></tr>
+        <tr><td>304</td><td>3xx</td><td>Not Modified — client can use a cached copy.</td></tr>
+        <tr><td>404</td><td>4xx (Client Error)</td><td>Not Found — no resource at the requested URI.</td></tr>
+        <tr><td>429</td><td>4xx</td><td>Too Many Requests — rate limiting or abuse protection.</td></tr>
+        <tr><td>500</td><td>5xx (Server Error)</td><td>Internal Server Error — generic unexpected failure.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Caching and Validators</h2>
+  <p>
+    HTTP caching reduces latency and bandwidth by allowing clients or intermediaries to reuse stored
+    responses. Validators such as <code>ETag</code> and <code>Last-Modified</code> support conditional requests.
+  </p>
+  <ul>
+    <li><code>Cache-Control</code> — Expresses freshness (for example, <code>max-age=600</code>).</li>
+    <li><code>ETag</code> — An opaque identifier that changes when the resource changes.</li>
+    <li><code>If-None-Match</code> — Allows the client to ask “has this ETag changed?”</li>
+    <li><code>Last-Modified</code> / <code>If-Modified-Since</code> — Similar mechanism using timestamps.</li>
+  </ul>
+</article>
+
+</main>
+
+<footer class="site-footer">
+  <p>© 2025 Miles Johnson — IT 3203 Project (Milestone #3)</p>
+  <p class="note">This website is a class project for
+    <a href="https://ksuweb.github.io/IT3203/" target="_blank" rel="noopener">KSU IT 3203 Web Development</a>.
+  </p>
+</footer>
+
+<script src="script.js" defer></script>
+</body>
+</html>
